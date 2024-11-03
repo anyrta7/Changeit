@@ -92,3 +92,10 @@ for select in "${select_texts[@]}"; do
         exit 1
     fi
 done
+
+for replace in "${replace_texts[@]}"; do
+    if [[ -z "$replace" ]]; then
+        echo "Error: Replacement text must not be empty."
+        exit 1
+    fi
+done
