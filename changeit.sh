@@ -27,6 +27,27 @@ EOF
     exit 1
 }
 
+process_line() {
+    local line="$1"
+
+    [[ -n "$add_first" ]] && line="${add_first}${line}"
+    [[ -n "$add_end" ]] && line="${line}${add_end}"
+
+    for ((i = 0; i < ${#select_texts[@]}; i++)); do
+        line="${line//"${select_texts[i]}"/"${replace_texts[i]}"}"
+    done
+
+    if [[ -n "$output_file" ]]; then
+        echo "$line" >>"$output_file" # Append output to the file
+    elif [[ "$quiet_mode" -eq 0 ]]; then
+        echo "$line"
+    fi
+
+    if [[ "$verbose_mode" -eq 1 ]]; then
+        echo "Processed line: $line"
+    fi
+}
+
 if [[ "$#" -eq 0 ]]; then
     echo "Error: No options provided."
     show_help
@@ -115,4 +136,14 @@ if [[ -n "$output_file" ]]; then
         # Create the output file if it does not exist
         touch "$output_file"
     fi
+fi
+
+if [[ -n "$input_file" ]]; then
+    while IFS= read -r line; do
+        process_line "$line"
+    done <"$input_file"
+else
+    while IFS= read -r line; do
+        process_line "$line"
+    done # Read from stdin
 fi
