@@ -80,3 +80,8 @@ while [[ "$#" -gt 0 ]]; do
         ;;
     esac
 done
+
+if [[ ${#select_texts[@]} -ne ${#replace_texts[@]} ]]; then
+    echo "Error: Each -s must have a corresponding -r."
+    show_help
+fi
