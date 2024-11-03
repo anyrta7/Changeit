@@ -17,13 +17,13 @@ This script allows you to modify the content of a text file by adding text at th
    Use one of the following commands to download the script:
 
    ```bash
-    wget https://github.com/anyrta7/changeit/raw/master/changeit.sh
+    wget https://raw.githubusercontent.com/anyrta7/Changeit/main/changeit.sh
     ```
 
     or use the curl
 
     ```bash
-    curl -O https://github.com/anyrta7/changeit/raw/master/changeit.sh
+    curl -O https://raw.githubusercontent.com/anyrta7/Changeit/main/changeit.sh
     ```
 
 2. **Make the Script Executable:**
