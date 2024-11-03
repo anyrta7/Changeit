@@ -9,6 +9,10 @@ verbose_mode=0
 declare -a select_texts
 declare -a replace_texts
 
+if [[ "$#" -eq 0 ]]; then
+    echo "Error: No options provided."
+fi
+
 while [[ "$#" -gt 0 ]]; do
     case "$1" in
     -af | --add-first)
