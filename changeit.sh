@@ -1,5 +1,11 @@
 #!/bin/bash
 
+cat <<EOF
+╔═╗┬ ┬┌─┐┌┐┌┌─┐┌─┐┬┌┬┐
+║  ├─┤├─┤││││ ┬├┤ │ │ 
+╚═╝┴ ┴┴ ┴┘└┘└─┘└─┘o ┴ 
+EOF
+
 add_first=""
 add_end=""
 output_file=""
