@@ -99,3 +99,20 @@ for replace in "${replace_texts[@]}"; do
         exit 1
     fi
 done
+
+if [[ -n "$output_file" ]]; then
+    if [[ -e "$output_file" ]]; then
+        # If output file exists and backup mode is enabled, create a backup
+        if [[ "$backup_mode" -eq 1 ]]; then
+            cp "$output_file" "${output_file}.bak" # Create a backup
+            echo "Backup created: ${output_file}.bak"
+        fi
+
+        # Clear the output file (regardless of backup mode)
+        >"$output_file" # Clear the file
+        echo "Output file '$output_file' has been cleared."
+    else
+        # Create the output file if it does not exist
+        touch "$output_file"
+    fi
+fi
