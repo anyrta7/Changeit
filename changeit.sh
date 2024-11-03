@@ -13,6 +13,13 @@ if [[ "$#" -eq 0 ]]; then
     echo "Error: No options provided."
 fi
 
+if [[ -t 0 ]]; then
+    input_file="$1"
+    shift
+else
+    input_file=""
+fi
+
 while [[ "$#" -gt 0 ]]; do
     case "$1" in
     -af | --add-first)
