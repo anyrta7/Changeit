@@ -85,3 +85,10 @@ if [[ ${#select_texts[@]} -ne ${#replace_texts[@]} ]]; then
     echo "Error: Each -s must have a corresponding -r."
     show_help
 fi
+
+for select in "${select_texts[@]}"; do
+    if [[ -z "$select" ]]; then
+        echo "Error: Selected text for replacement must not be empty."
+        exit 1
+    fi
+done
