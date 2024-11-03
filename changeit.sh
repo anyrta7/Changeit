@@ -20,6 +20,11 @@ else
     input_file=""
 fi
 
+if [[ -n "$input_file" && ! -f "$input_file" ]]; then
+    echo "Error: '$input_file' is not a valid file."
+    exit 1
+fi
+
 while [[ "$#" -gt 0 ]]; do
     case "$1" in
     -af | --add-first)
